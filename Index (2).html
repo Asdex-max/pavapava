@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PAVA Service — 2025–2026</title>
+  <meta name="description" content="PAVA Service — Итоги года 2025–2026: 1400+ выкупов, $1,308,000+ объёма, 1725+ отзывов. pava-services.com"/>
+
+  <style>
+    :root{
+      --bg1:#070710; --bg2:#140a1e;
+      --text:rgba(255,255,255,.94);
+      --muted:rgba(255,255,255,.74);
+      --muted2:rgba(255,255,255,.64);
+      --border:rgba(255,255,255,.14);
+      --card:rgba(255,255,255,.07);
+      --card2:rgba(255,255,255,.05);
+      --shadow:0 28px 120px rgba(0,0,0,.55);
+
+      --a1:#a855f7;
+      --a2:#ec4899;
+      --g1:#22c55e;
+      --g2:#16a34a;
+
+      --r:22px;
+      --r2:18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 8%, rgba(168,85,247,.35), transparent 60%),
+        radial-gradient(1100px 700px at 82% 18%, rgba(236,72,153,.30), transparent 55%),
+        radial-gradient(900px 500px at 50% 92%, rgba(34,197,94,.10), transparent 60%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* 🎄 Side garlands */
+    .garland{
+      position:fixed;
+      top:0; bottom:0;
+      width:14px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #f87171 0 12px,
+        #22c55e 12px 24px,
+        #60a5fa 24px 36px,
+        #facc15 36px 48px
+      );
+      box-shadow:0 0 18px rgba(255,255,255,.22);
+      opacity:.9;
+      z-index:1;
+    }
+    .garland.left{left:0}
+    .garland.right{right:0}
+
+    /* ❄️ Snow */
+    .snowflake{
+      position:fixed;
+      top:-16px;
+      color:rgba(255,255,255,.92);
+      opacity:.65;
+      pointer-events:none;
+      z-index:2;
+      animation: fall linear infinite;
+      filter: drop-shadow(0 6px 18px rgba(255,255,255,.12));
+    }
+    @keyframes fall{
+      to{transform:translateY(115vh)}
+    }
+
+    /* Top controls */
+    .controls{
+      position:fixed;
+      top:14px;
+      right:18px;
+      display:flex;
+      gap:10px;
+      z-index:9999;
+    }
+    .ctrl{
+      width:44px;height:44px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, filter .12s ease;
+      box-shadow: 0 14px 60px rgba(0,0,0,.25);
+      font-size:18px;
+    }
+    .ctrl:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.10)}
+    .ctrl.active{
+      background: linear-gradient(135deg, rgba(168,85,247,.95), rgba(236,72,153,.95));
+      border-color: rgba(236,72,153,.35);
+    }
+
+    .wrap{
+      max-width:1040px;
+      margin:0 auto;
+      padding:88px 20px 110px;
+      position:relative;
+      z-index:3;
+    }
+
+    /* HERO banner */
+    .hero{
+      border:1px solid var(--border);
+      border-radius:var(--r);
+      background:
+        radial-gradient(900px 340px at 20% 10%, rgba(168,85,247,.28), transparent 62%),
+        radial-gradient(900px 340px at 80% 10%, rgba(236,72,153,.22), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        linear-gradient(90deg, rgba(168,85,247,.14), transparent 25%),
+        linear-gradient(270deg, rgba(236,72,153,.12), transparent 25%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      padding:26px 26px 22px;
+    }
+
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:99px;
+      background:rgba(255,255,255,.92);
+      opacity:.85;
+    }
+
+    .title{
+      margin:10px 0 6px;
+      font-size:40px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .title .grad{
+      background:linear-gradient(90deg, var(--a1), var(--a2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+      max-width:86ch;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      color:var(--text);
+      font-weight:900;
+      font-size:14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, filter .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.22)}
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(168,85,247,.95), rgba(236,72,153,.95));
+      border-color:rgba(236,72,153,.35);
+      box-shadow:0 18px 80px rgba(236,72,153,.16);
+    }
+    .btn.green{
+      background:linear-gradient(135deg, rgba(34,197,94,.92), rgba(22,163,74,.92));
+      border-color:rgba(34,197,94,.35);
+      box-shadow:0 18px 80px rgba(34,197,94,.12);
+    }
+    .btn .miniDot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.9);opacity:.85}
+
+    /* Stats */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:var(--r2);
+      padding:16px 14px;
+      backdrop-filter: blur(6px);
+    }
+    .num{
+      font-size:28px;
+      font-weight:950;
+      letter-spacing:-.2px;
+      background:linear-gradient(90deg, var(--a1), var(--a2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      margin-bottom:6px;
+    }
+    .label{
+      margin:0;
+      color:var(--muted2);
+      font-size:13px;
+      line-height:1.35;
+      font-weight:700;
+    }
+
+    /* Sections */
+    .section{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background:var(--card2);
+      border-radius:var(--r2);
+      padding:18px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .section p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+    .section p + p{margin-top:10px}
+
+    .strong{color:var(--text); font-weight:900}
+    .hi{
+      display:inline-block;
+      padding:.1rem .45rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      font-weight:900;
+      color:var(--text);
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+
+    /* Pretty blocks layout */
+    .twocol{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .li{
+      padding:12px 12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:16px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .li b{color:var(--text)}
+
+    .kpi{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    .kpi .box{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi .box .t{
+      color:var(--muted2);
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .kpi .box .v{
+      font-weight:950;
+      font-size:14px;
+      color:var(--text);
+      line-height:1.3;
+    }
+
+    /* QR */
+    .qrRow{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .qr{
+      width:120px;
+      height:120px;
+      padding:7px;
+      background:#fff;
+      border-radius:16px;
+      border:1px solid var(--border);
+    }
+    .qr img{width:100%;height:100%;border-radius:10px}
+
+    /* Footer */
+    .footer{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      color:var(--muted2);
+      font-size:13px;
+      padding:14px 4px 0;
+    }
+    .link{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.18);
+    }
+    .link:hover{border-bottom-color:rgba(255,255,255,.35)}
+
+    @media (max-width:980px){
+      .grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .twocol{grid-template-columns:1fr}
+      .title{font-size:32px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="garland left"></div>
+  <div class="garland right"></div>
+
+  <!-- 🎵 music (runs only after user click) -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/12/21/audio_0f8b90f6bb.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- top right controls -->
+  <div class="controls" aria-label="Controls">
+    <div class="ctrl active" id="btnRU" title="Русский">🇷🇺</div>
+    <div class="ctrl" id="btnEN" title="English">🇺🇸</div>
+    <div class="ctrl" id="btnMusic" title="Music">🎵</div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="badgeRow">
+          <div class="pill"><span class="dot"></span><span data-i18n="badge">Итоги года</span></div>
+          <div class="pill"><span class="dot"></span><span class="strong">PAVA Service</span>&nbsp;•&nbsp;<span data-i18n="years">2025–2026</span></div>
+        </div>
+
+        <h1 class="title" data-i18n="title">
+          PAVA Service <span class="grad">2025–2026</span>
+        </h1>
+
+        <p class="subtitle" data-i18n="subtitle">
+          Самый тяжёлый год в истории сервиса — и один из самых сильных по результату. Спасибо за доверие и поддержку.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="https://pava-services.com/" target="_blank" rel="noopener">
+            <span class="miniDot"></span><span data-i18n="btnSite">Открыть сайт</span>
+          </a>
+          <a class="btn" href="https://t.me/vouchespava" target="_blank" rel="noopener">
+            <span class="miniDot"></span><span data-i18n="btnReviews">Отзывы</span>
+          </a>
+          <a class="btn green" href="https://t.me/pava_support" target="_blank" rel="noopener">
+            <span class="miniDot"></span><span data-i18n="btnManager">Написать менеджеру</span>
+          </a>
+          <a class="btn" href="https://t.me/+2pgiw8U-LOA2YzJi" target="_blank" rel="noopener">
+            <span class="miniDot"></span><span data-i18n="btnUpdates">Канал обновлений</span>
+          </a>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="num">1400+</div>
+            <p class="label" data-i18n="m1">товаров выкуплено нами за 12 месяцев</p>
+          </div>
+          <div class="card">
+            <div class="num">$1,308,000+</div>
+            <p class="label" data-i18n="m2">общая сумма выкупа за год</p>
+          </div>
+          <div class="card">
+            <div class="num">1725+</div>
+            <p class="label" data-i18n="m3">отзывов за всё время работы сервиса</p>
+          </div>
+          <div class="card">
+            <div class="num">0</div>
+            <p class="label" data-i18n="m4">скам-листов и подтверждённых обвинений <span class="hi">за этот год</span></p>
+          </div>
+        </div>
+
+        <!-- Trust in numbers -->
+        <div class="section" style="margin-top:14px">
+          <h2 data-i18n="trustTitle">Доверие в цифрах</h2>
+          <div class="kpi">
+            <div class="box">
+              <div class="t" data-i18n="k1t">Контроль качества</div>
+              <div class="v" data-i18n="k1v">📦 Бесплатная видеораспаковка и фото для каждого пака (делаем по умолчанию)</div>
+            </div>
+            <div class="box">
+              <div class="t" data-i18n="k2t">Коммуникация</div>
+              <div class="v" data-i18n="k2v">💬 Быстрые ответы по решипу/отрисовкам/верификациям/прозвону — штатный режим</div>
+            </div>
+            <div class="box">
+              <div class="t" data-i18n="k3t">Репутация</div>
+              <div class="v" data-i18n="k3v">🛡 0 скам-листов и 0 подтверждённых обвинений именно за этот год</div>
+            </div>
+            <div class="box">
+              <div class="t" data-i18n="k4t">Системность</div>
+              <div class="v" data-i18n="k4v">⚙️ Мы строим сервис как инфраструктуру: процессы, контроль, прозрачность</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Website block -->
+        <div class="section">
+          <h2 data-i18n="siteTitle">Главное обновление года — наш официальный сайт</h2>
+          <p data-i18n="siteP1">
+            В этом году мы запустили <span class="strong">pava-services.com</span> — не “визитку”, а удобную платформу для клиентов:
+            информация, логика сервиса, обновления и инструменты, которые экономят время и усиливают прозрачность.
+          </p>
+          <p data-i18n="siteP2">
+            Это шаг к ещё более системной работе: меньше хаоса, больше контроля и понятных правил на каждом этапе.
+          </p>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn primary" href="https://pava-services.com/" target="_blank" rel="noopener">
+              <span class="miniDot"></span><span data-i18n="btnGoSite">Перейти на сайт</span>
+            </a>
+            <a class="btn" href="https://pava-services.com/" target="_blank" rel="noopener">
+              <span class="miniDot"></span><span data-i18n="btnFeatures">Посмотреть возможности</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FULL TEXT as blocks -->
+        <div class="twocol">
+          <div class="section">
+            <h2 data-i18n="storyTitle">Итоги года — полностью</h2>
+
+            <p data-i18n="p1">
+              Этот год был, пожалуй, самым сложным за всю историю нашего сервиса. Много нагрузки, много задач, много ответственности.
+              Но главное — мы прошли его вместе с вами. И мы здесь.
+            </p>
+            <p data-i18n="p2">
+              За последние 12 месяцев мы выкупили более <span class="strong">1400 товаров</span>.
+              Общая сумма выкупа за год составила <span class="strong">$1,308,000+</span>.
+              За всё время работы сервиса вы оставили нам более <span class="strong">1725 отзывов</span>.
+            </p>
+            <p data-i18n="p3">
+              За этот год: <span class="hi">0 скам-листов</span> и <span class="hi">0 подтверждённых обвинений</span>.
+              И ни одной ситуации, которая бы сломала нашу репутацию — даже в самый напряжённый период.
+            </p>
+            <p data-i18n="p4">
+              Спасибо каждому, кто доверял, ждал, поддерживал и писал отзывы. Это то, что даёт силы двигаться дальше.
+              Спасибо и тем, кто пытался задеть — иногда именно чужие слова становятся мотивацией доказывать делом.
+              Если нам завидуют — значит, мы идём в правильном направлении.
+            </p>
+            <p data-i18n="p5">
+              Я уверен: это не предел и даже не половина нашего потенциала. Впереди — новые обновления, новые возможности и ещё большие высоты,
+              которые мы возьмём вместе с вами.
+            </p>
+            <p data-i18n="p6">
+              Это уже третий Новый год, который мы встречаем вместе: 2023, 2024, 2025 — и теперь 2026.
+              Спасибо, что остаётесь с нами — и тем, кто с первого дня, и тем, кто присоединился недавно.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2 data-i18n="quickTitle">Коротко по делу</h2>
+            <ul class="list">
+              <li class="li" data-i18n="q1">✅ <b>Прозрачность</b>: контроль и понятные правила на каждом шаге.</li>
+              <li class="li" data-i18n="q2">✅ <b>Фото/видео</b>: бесплатная видеораспаковка и фото — по умолчанию.</li>
+              <li class="li" data-i18n="q3">✅ <b>Поддержка</b>: быстрый штатный режим по решипу/отрисовкам/верификациям/прозвону.</li>
+              <li class="li" data-i18n="q4">✅ <b>Репутация</b>: 0 скам-листов и 0 подтверждённых обвинений за этот год.</li>
+              <li class="li" data-i18n="q5">✅ <b>Рост</b>: сайт pava-services.com + готовим новые обновления в 2026.</li>
+            </ul>
+
+            <h2 style="margin-top:14px" data-i18n="qrTitle">Быстрый контакт</h2>
+            <div class="qrRow">
+              <div class="qr">
+                <img alt="QR Telegram" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https://t.me/pava_support">
+              </div>
+              <div>
+                <p class="subtitle" data-i18n="qrText" style="margin:0">
+                  Наведи камеру на QR — и сразу откроется Telegram менеджера. Быстро и без лишних шагов.
+                </p>
+                <div class="cta" style="margin-top:10px">
+                  <a class="btn green" href="https://t.me/pava_support" target="_blank" rel="noopener">
+                    <span class="miniDot"></span><span data-i18n="btnTG">Открыть Telegram</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="pill"><span class="dot"></span><span data-i18n="footerLeft">С Новым годом!</span> 🎄</div>
+          <div>
+            © PAVA Service • <span data-i18n="footerYear">2026</span> •
+            <a class="link" href="https://pava-services.com/" target="_blank" rel="noopener">pava-services.com</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // ❄️ Generate snow
+    (function(){
+      const count = 46;
+      for(let i=0;i<count;i++){
+        const s = document.createElement("div");
+        s.className = "snowflake";
+        s.textContent = "❄";
+        s.style.left = (Math.random()*100) + "vw";
+        s.style.fontSize = (10 + Math.random()*14) + "px";
+        s.style.animationDuration = (6 + Math.random()*10) + "s";
+        s.style.animationDelay = (-Math.random()*10) + "s";
+        document.body.appendChild(s);
+      }
+    })();
+
+    // i18n
+    const dict = {
+      ru: {
+        badge:"Итоги года",
+        years:"2025–2026",
+        title:'PAVA Service <span class="grad">2025–2026</span>',
+        subtitle:"Самый тяжёлый год в истории сервиса — и один из самых сильных по результату. Спасибо за доверие и поддержку.",
+        btnSite:"Открыть сайт",
+        btnReviews:"Отзывы",
+        btnManager:"Написать менеджеру",
+        btnUpdates:"Канал обновлений",
+        m1:"товаров выкуплено нами за 12 месяцев",
+        m2:"общая сумма выкупа за год",
+        m3:"отзывов за всё время работы сервиса",
+        m4:'скам-листов и подтверждённых обвинений',
+
+        trustTitle:"Доверие в цифрах",
+        k1t:"Контроль качества",
+        k1v:"📦 Бесплатная видеораспаковка и фото для каждого пака (делаем по умолчанию)",
+        k2t:"Коммуникация",
+        k2v:"💬 Быстрые ответы по решипу/отрисовкам/верификациям/прозвону — штатный режим",
+        k3t:"Репутация",
+        k3v:"🛡 0 скам-листов и 0 подтверждённых обвинений за год",
+        k4t:"Системность",
+        k4v:"⚙️ Мы строим сервис как инфраструктуру: процессы, контроль, прозрачность",
+
+        siteTitle:"Главное обновление года — наш официальный сайт",
+        siteP1:"В этом году мы запустили pava-services.com — не “визитку”, а удобную платформу для клиентов: информация, логика сервиса, обновления и инструменты, которые экономят время и усиливают прозрачность.",
+        siteP2:"Это шаг к ещё более системной работе: меньше хаоса, больше контроля и понятных правил на каждом этапе.",
+        btnGoSite:"Перейти на сайт",
+        btnFeatures:"Посмотреть возможности",
+
+        storyTitle:"Итоги года — полностью",
+        p1:"Этот год был, пожалуй, самым сложным за всю историю нашего сервиса. Много нагрузки, много задач, много ответственности. Но главное — мы прошли его вместе с вами. И мы здесь.",
+        p2:"За последние 12 месяцев мы выкупили более 1400 товаров. Общая сумма выкупа за год составила $1,308,000+. За всё время работы сервиса вы оставили нам более 1725 отзывов.",
+        p3:"За этот год: 0 скам-листов и 0 подтверждённых обвинений в обмане. И ни одной ситуации, которая бы сломала нашу репутацию — даже в самый напряжённый период.",
+        p4:"Спасибо каждому, кто доверял, ждал, поддерживал и писал отзывы. Это то, что даёт силы двигаться дальше. Спасибо и тем, кто пытался задеть — иногда именно чужие слова становятся мотивацией доказывать делом. Если нам завидуют — значит, мы идём в правильном направлении.",
+        p5:"Я уверен: это не предел и даже не половина нашего потенциала. Впереди — новые обновления, новые возможности и ещё большие высоты, которые мы возьмём вместе с вами.",
+        p6:"Это уже третий Новый год, который мы встречаем вместе: 2023, 2024, 2025 — и теперь 2026. Спасибо, что остаётесь с нами — и тем, кто с первого дня, и тем, кто присоединился недавно.",
+
+        quickTitle:"Коротко по делу",
+        q1:"✅ Прозрачность: контроль и понятные правила на каждом шаге.",
+        q2:"✅ Фото/видео: бесплатная видеораспаковка и фото — по умолчанию.",
+        q3:"✅ Поддержка: быстрый штатный режим по решипу/отрисовкам/верификациям/прозвону.",
+        q4:"✅ Репутация: 0 скам-листов и 0 подтверждённых обвинений за этот год.",
+        q5:"✅ Рост: сайт pava-services.com + готовим новые обновления в 2026.",
+
+        qrTitle:"Быстрый контакт",
+        qrText:"Наведи камеру на QR — и сразу откроется Telegram менеджера. Быстро и без лишних шагов.",
+        btnTG:"Открыть Telegram",
+
+        footerLeft:"С Новым годом!",
+        footerYear:"2026"
+      },
+
+      en: {
+        badge:"Year in Review",
+        years:"2025–2026",
+        title:'PAVA Service <span class="grad">2025–2026</span>',
+        subtitle:"Our toughest year — and one of the strongest by results. Thank you for your trust and support.",
+        btnSite:"Open Website",
+        btnReviews:"Reviews",
+        btnManager:"Message Support",
+        btnUpdates:"Updates Channel",
+        m1:"items bought out within the last 12 months",
+        m2:"total buyout volume this year",
+        m3:"reviews (all-time)",
+        m4:'scam lists & confirmed fraud claims <span class="hi">this year</span>',
+
+        trustTitle:"Trust in Numbers",
+        k1t:"Quality Control",
+        k1v:"📦 Free unboxing video + photos for every package (by default)",
+        k2t:"Communication",
+        k2v:"💬 Fast responses for reships / edits / verification / calls — normal mode",
+        k3t:"Reputation",
+        k3v:"🛡 0 scam lists and 0 confirmed fraud claims specifically this year",
+        k4t:"Structure",
+        k4v:"⚙️ We build the service as infrastructure: processes, control, transparency",
+
+        siteTitle:"Key update of the year — our official website",
+        siteP1:"This year we launched pava-services.com — not just a “landing page”, but a client-friendly platform: clear info, updates, and tools that save time and increase transparency.",
+        siteP2:"A step toward an even more structured service: less chaos, more control, and clear rules at every stage.",
+        btnGoSite:"Go to website",
+        btnFeatures:"View features",
+
+        storyTitle:"Full Year Summary",
+        p1:"This year was likely the most challenging in our service history — high workload, many tasks, and maximum responsibility. The key point: we went through it together. And we’re here.",
+        p2:"Over the last 12 months we bought out 1400+ items. Total buyout volume reached $1,308,000+. And you’ve left 1725+ reviews over the entire lifetime of the service.",
+        p3:"This year: 0 scam lists and 0 confirmed fraud accusations. Not a single case that could break our reputation — even in the most intense period.",
+        p4:"Thank you to everyone who trusted, waited, supported, and left reviews — that’s what gives us strength. And thanks to critics too: sometimes their words become motivation to prove everything by actions. If people envy us, we’re moving in the right direction.",
+        p5:"I’m sure this is not the limit — not even half of our potential. More updates, more features, and bigger heights are ahead — together with you.",
+        p6:"This is already our third New Year together: 2023, 2024, 2025 — and now 2026. Thank you for staying with us — both day-one supporters and new clients.",
+
+        quickTitle:"Quick Highlights",
+        q1:"✅ Transparency: control and clear rules at every step.",
+        q2:"✅ Photo/video: free unboxing video + photos by default.",
+        q3:"✅ Support: fast normal mode for reships / edits / verification / calls.",
+        q4:"✅ Reputation: 0 scam lists and 0 confirmed fraud claims this year.",
+        q5:"✅ Growth: pava-services.com + new updates coming in 2026.",
+
+        qrTitle:"Quick Contact",
+        qrText:"Scan the QR to open our Telegram support instantly — fast and simple.",
+        btnTG:"Open Telegram",
+
+        footerLeft:"Happy New Year!",
+        footerYear:"2026"
+      }
+    };
+
+    function applyLang(lang){
+      const d = dict[lang] || dict.ru;
+      document.documentElement.lang = lang;
+
+      // some elements are HTML (title includes span)
+      const titleEl = document.querySelector('[data-i18n="title"]');
+      if(titleEl) titleEl.innerHTML = d.title;
+
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const k = el.getAttribute("data-i18n");
+        if(k === "title") return;
+        if(d[k] !== undefined) el.innerHTML = d[k];
+      });
+
+      document.getElementById("btnRU").classList.toggle("active", lang==="ru");
+      document.getElementById("btnEN").classList.toggle("active", lang==="en");
+
+      localStorage.setItem("pava_lang", lang);
+    }
+
+    const btnRU = document.getElementById("btnRU");
+    const btnEN = document.getElementById("btnEN");
+
+    btnRU.addEventListener("click", ()=>applyLang("ru"));
+    btnEN.addEventListener("click", ()=>applyLang("en"));
+
+    // Music toggle
+    const music = document.getElementById("bgMusic");
+    const btnMusic = document.getElementById("btnMusic");
+    let playing = false;
+    btnMusic.addEventListener("click", ()=>{
+      if(!playing){
+        music.volume = 0.14; // тихо
+        music.play().catch(()=>{});
+        btnMusic.classList.add("active");
+        playing = true;
+      }else{
+        music.pause();
+        btnMusic.classList.remove("active");
+        playing = false;
+      }
+    });
+
+    // initial lang: saved -> browser -> ru
+    const saved = localStorage.getItem("pava_lang");
+    if(saved){
+      applyLang(saved);
+    }else{
+      const isEN = (navigator.language || "").toLowerCase().startsWith("en");
+      applyLang(isEN ? "en" : "ru");
+    }
+  </script>
+</body>
+</html>
